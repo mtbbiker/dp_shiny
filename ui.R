@@ -10,6 +10,16 @@
 library(shiny)
 
 # Define UI for application that draws a histogram
+<<<<<<< HEAD
+shinyUI(pageWithSidebar(
+  headerPanel("Example plot"),
+  sidebarPanel(
+    #sliderInput('mu', 'Guess at the mean',value = 70, min = 62, max = 74, step = 0.05,)
+    sliderInput('mu', 'Guess at the mean',value = 3, min = 0, max = 7, step = 0.5,)
+  ),
+  mainPanel(
+    plotOutput('newHist')
+=======
 shinyUI(fluidPage(
   
   # Application title
@@ -29,5 +39,6 @@ shinyUI(fluidPage(
     mainPanel(
        plotOutput("distPlot")
     )
+>>>>>>> b17e530d513ff6ad5c61be256feb8ce4fa977e51
   )
 ))
