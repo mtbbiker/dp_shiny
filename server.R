@@ -17,6 +17,8 @@ library(UsingR)
 myfiledatamale <- read.csv("data/maledata.csv", colClasses = "character")
 myfiledatafemale <- read.csv("data/femaledata.csv", colClasses = "character")
 
+vo2max <- function(distance) (distance - 504.9) / 44.73
+
 shinyServer(
   
   
@@ -27,7 +29,7 @@ shinyServer(
 
         if(input$radioGender==1)
         {
-          output$text1 <-renderText("Male")
+          #output$text1 <-renderText("Male")
 
           if(input$varAge=="ALL")
           {
@@ -36,11 +38,12 @@ shinyServer(
           else
           {
             myfiledatamale[myfiledatamale$Age==input$varAge,,drop =FALSE]
+            output$testresult <- renderText("Excellent !")
           }
         }
         else
         {
-          output$text1 <-renderText("Female")
+          #output$text1 <-renderText("Female")
           if(input$varAge=="ALL")
           {
             myfiledatafemale[]
@@ -48,13 +51,20 @@ shinyServer(
           else
           {
             myfiledatafemale[myfiledatafemale$Age==input$varAge,,drop =FALSE]
+            output$testresult <- renderText("Poor !")
           }
         }
     })
     
-    output$text1 <- renderText({
+    output$vo2max <- renderText({
+      
+      #if (input$goButton == 0) "You have not calculated anything"
+      #    else paste(vo2max(input$numDist), " mls/kg/min")
+      
       input$goButton
-      isolate(paste(input$text1, input$text2))
+      isolate(
+        vo2max(input$numDist)
+      )
     })
     
     #output$text1 <- renderText({
