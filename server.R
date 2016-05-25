@@ -51,3 +51,11 @@ shinyServer(
     
   }
 )
+
+#http://conflict.lshtm.ac.uk/page_125.htm
+
+#BMI = Weight / (Height/100)2
+#ZScore = ((BMI/M)L - 1) / (L * S)
+
+
+#NonHispanicWhite = -4.9310+0.2804* BMI_Z_score - 0.0257 * HDL + 0.0189 * SBP + 0.6240 * ln(Tri)+0.0140* Glu
