@@ -13,51 +13,48 @@
 
 
 library(UsingR)
-#data(galton)
 
-library(data.table)
-#datafile <- "household_power_consumption.txt"
-## Get the Training Data
-#pol_data <- read.table(datafile,sep=";",header = TRUE)
-
-library(dplyr)
-#x <- filter(pol_data, Date >= "2007-02-01" , Date  <= "2007-02-02")
-##Convert to POSIX Date and format
-#pol_data$Date <- as.Date(strptime(pol_data$Date,"%d/%m/%Y"),"%Y-%m-%d" )
-##pol_data$Date <- strptime(pol_data$Date,"%d/%m/%Y")
-
-##Format text to be coerced to numerics later
-#pol_data$Global_active_power <- as.numeric(gsub(",","",pol_data$Global_active_power))
-##pol_data$Global_active_power <- as.numeric(pol_data$Global_active_power)
-
-#smalldata <- subset(pol_data, Date >= "2007-02-01" & Date <= "2007-02-02")
-#smalldata$Global_active_power <- as.numeric(smalldata$Global_active_power)
-
-##hist(as.numeric(smalldata$Global_active_power), col = "orange",breaks = 100)
-##hist(smalldata$Global_active_power, col = "orange",main = "Global Active Power",xlab = "Global Active Power(kilowatts)")
+myfiledatamale <- read.csv("data/maledata.csv", colClasses = "character")
+myfiledatafemale <- read.csv("data/femaledata.csv", colClasses = "character")
 
 shinyServer(
+  
+  
+  
   function(input, output) {
     
     output$mytable = renderDataTable({
-      #myfiledatamale[]
-      #output$mytable <-renderDataTable({myfiledatamale})    
-      input$goButton
-      isolate(
+
         if(input$radioGender==1)
         {
           output$text1 <-renderText("Male")
-          #output$mytable <-renderDataTable({myfiledatamale})
-          myfiledatamale[myfiledatamale$Age==input$varAge,,drop =FALSE]
+
+          if(input$varAge=="ALL")
+          {
+            myfiledatamale[]
+          }
+          else
+          {
+            myfiledatamale[myfiledatamale$Age==input$varAge,,drop =FALSE]
+          }
         }
         else
         {
           output$text1 <-renderText("Female")
-          #output$mytable <-renderDataTable({myfiledatamale[myfiledatamale$Age==input$varAge,,drop =FALSE]})
-          myfiledatamale[myfiledatamale$Age==input$varAge,,drop =FALSE]
+          if(input$varAge=="ALL")
+          {
+            myfiledatafemale[]
+          }
+          else
+          {
+            myfiledatafemale[myfiledatafemale$Age==input$varAge,,drop =FALSE]
+          }
         }
-      )
-      
+    })
+    
+    output$text1 <- renderText({
+      input$goButton
+      isolate(paste(input$text1, input$text2))
     })
     
     #output$text1 <- renderText({
@@ -78,21 +75,4 @@ shinyServer(
   }
 )
 
-library(shiny)
-
-# Define server logic required to draw a histogram
-#shinyServer(function(input, output) {
-   
-#  output$distPlot <- renderPlot({
-    
-    # generate bins based on input$bins from ui.R
-#    x    <- faithful[, 2] 
-#    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-    
-    # draw the histogram with the specified number of bins
-#    hist(x, breaks = bins, col = 'darkgray', border = 'white')
-    
-#  })
-  
-#})
 

@@ -23,17 +23,19 @@ shinyUI(pageWithSidebar(
     numericInput("numDist",label = h3("Distance walked in meters"), value = 1000),
     radioButtons("radioGender", label = h3("Select Gender"),
                  choices = list("Male" = 1, "Female" = 2),selected = 1),
-    actionButton("goButton", "Calculate!"),
+    actionButton("goButton", "Calculate!")
     
-    sliderInput('mu', 'Guess at the mean',value = 3, min = 0, max = 7, step = 0.5,)
+    #,sliderInput('mu', 'Guess at the mean',value = 3, min = 0, max = 7, step = 0.5,)
     
   ),
   mainPanel(
     h2('Range of data for Age'),
-    p('Output text1'),
-    textOutput('text1'),
+    
     dataTableOutput('mytable'),
-    plotOutput('newHist')
+    
+    h2('Comparative Result'),
+    textOutput('text1')
+    #,plotOutput('newHist')
     
 
   )
