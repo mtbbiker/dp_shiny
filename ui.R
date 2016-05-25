@@ -10,35 +10,31 @@
 library(shiny)
 
 # Define UI for application that draws a histogram
-<<<<<<< HEAD
+
 shinyUI(pageWithSidebar(
-  headerPanel("Example plot"),
+  headerPanel("Cooper 12 min Walk VO2max Test"),
   sidebarPanel(
     #sliderInput('mu', 'Guess at the mean',value = 70, min = 62, max = 74, step = 0.05,)
+    selectInput("varAge", 
+                label = h3("Select Age") ,
+                choices = c("ALL","13-14", "15-16",
+                            "17-19", "20-29","30-39","40-49",">50"),
+                selected = "ALL"),
+    numericInput("numDist",label = h3("Distance walked in meters"), value = 1000),
+    radioButtons("radioGender", label = h3("Select Gender"),
+                 choices = list("Male" = 1, "Female" = 2),selected = 1),
+    actionButton("goButton", "Calculate!"),
+    
     sliderInput('mu', 'Guess at the mean',value = 3, min = 0, max = 7, step = 0.5,)
+    
   ),
   mainPanel(
+    h2('Range of data for Age'),
+    p('Output text1'),
+    textOutput('text1'),
+    dataTableOutput('mytable'),
     plotOutput('newHist')
-=======
-shinyUI(fluidPage(
-  
-  # Application title
-  titlePanel("Old Faithful Geyser Data"),
-  
-  # Sidebar with a slider input for number of bins 
-  sidebarLayout(
-    sidebarPanel(
-       sliderInput("bins",
-                   "Number of bins:",
-                   min = 1,
-                   max = 50,
-                   value = 30)
-    ),
     
-    # Show a plot of the generated distribution
-    mainPanel(
-       plotOutput("distPlot")
-    )
->>>>>>> b17e530d513ff6ad5c61be256feb8ce4fa977e51
+
   )
 ))
