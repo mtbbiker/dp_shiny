@@ -34,6 +34,7 @@ shinyUI(pageWithSidebar(
     h2('Range of data for Age'),
     
     dataTableOutput('mytable'),
+    p('Output text2'),
     h2(textOutput('testresult')),
     h2('Estimated VO2max'),
     h2(textOutput('vo2max'))

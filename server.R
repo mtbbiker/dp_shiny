@@ -19,11 +19,14 @@ myfiledatafemale <- read.csv("data/femaledata.csv", colClasses = "character")
 
 vo2max <- function(distance) (distance - 504.9) / 44.73
 
+
 shinyServer(
   
   
   
   function(input, output) {
+    
+    
     
     output$mytable = renderDataTable({
 
@@ -38,7 +41,6 @@ shinyServer(
           else
           {
             myfiledatamale[myfiledatamale$Age==input$varAge,,drop =FALSE]
-            output$testresult <- renderText("Excellent !")
           }
         }
         else
@@ -51,7 +53,6 @@ shinyServer(
           else
           {
             myfiledatafemale[myfiledatafemale$Age==input$varAge,,drop =FALSE]
-            output$testresult <- renderText("Poor !")
           }
         }
     })
@@ -64,8 +65,17 @@ shinyServer(
       input$goButton
       isolate(
         vo2max(input$numDist)
+        
       )
     })
+    
+    output$testresult <- renderText({
+      
+      input$goButton
+      isolate(
+          "Excellent !"
+        )
+      })
     
     #output$text1 <- renderText({
       
