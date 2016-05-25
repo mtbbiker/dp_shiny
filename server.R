@@ -2,16 +2,16 @@
 # This is the server logic of a Shiny web application. You can run the 
 # application by clicking 'Run App' above.
 #
-<<<<<<< HEAD
+
 # Find out more about sliderInput('mu', 'Guess at the mean',value = 70, min = 62, max = 74, step = 0.05,)building applications with Shiny here:
-=======
+
 # Find out more about building applications with Shiny here:
->>>>>>> b17e530d513ff6ad5c61be256feb8ce4fa977e51
+
 # 
 #    http://shiny.rstudio.com/
 #
 
-<<<<<<< HEAD
+
 library(UsingR)
 #data(galton)
 
@@ -51,22 +51,3 @@ shinyServer(
     
   }
 )
-=======
-library(shiny)
-
-# Define server logic required to draw a histogram
-shinyServer(function(input, output) {
-   
-  output$distPlot <- renderPlot({
-    
-    # generate bins based on input$bins from ui.R
-    x    <- faithful[, 2] 
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-    
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white')
-    
-  })
-  
-})
->>>>>>> b17e530d513ff6ad5c61be256feb8ce4fa977e51
