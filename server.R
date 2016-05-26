@@ -19,6 +19,7 @@ catagories <- names(myfiledatamale)
 #Calculate the Estimated VO2max
 vo2max <- function(distance) (distance - 504.9) / 44.73
 
+#Test in what catagory did the measured distance fell
 test <- function(testdata,dist)
 {
   result <- ""
@@ -26,7 +27,7 @@ test <- function(testdata,dist)
     
     a <- strsplit(testdata[,i],"-")
     
-    print(a)
+    #print(a)
     
     ll <- length(a[[1]])
     
@@ -34,19 +35,18 @@ test <- function(testdata,dist)
     {
       ##Single
       lower <- sapply(a, function(x){as.numeric(x[1])})
-      print(lower)
+      #print(lower)
       if(dist > lower)
       {
         #High value
-        print("Match Upper bound")
+        #print("Match Upper bound")
         result <- catagories[i]
         break
       } else 
       {
         #Test more
-        print("Match Lower bound")      
+        #print("Match Lower bound")      
         result <- catagories[i]
-        
       }
     } else
     {
@@ -55,13 +55,13 @@ test <- function(testdata,dist)
       upper <- sapply(a, function(x){as.numeric(x[2])})
       if((lower <= dist) & (upper >= dist )) #Test more
       {
-        print("Match multi")
+        #print("Match multi")
         result <- catagories[i]
         break
       } 
       else 
       {
-        print("Test More Multi")
+        #print("Test More Multi")
       } 
     }
   }
