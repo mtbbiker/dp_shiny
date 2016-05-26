@@ -23,7 +23,7 @@ shinyUI(pageWithSidebar(
                 choices = c("ALL","13-14", "15-16",
                             "17-19", "20-29","30-39","40-49",">50"),
                 selected = "ALL"),
-    numericInput("numDist",label = h3("Distance walked in meters"), value = 1000),
+    numericInput("numDist",label = h3("Distance walked in meters"), value = 0),
     
     actionButton("goButton", "Calculate!")
     
@@ -34,7 +34,7 @@ shinyUI(pageWithSidebar(
     h2('Range of data for Age'),
     
     dataTableOutput('mytable'),
-    p('Output text2'),
+    h3('Results for walking Distance'),
     h2(textOutput('testresult')),
     h2('Estimated VO2max'),
     h2(textOutput('vo2max'))
