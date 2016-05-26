@@ -19,12 +19,12 @@ catagories <- names(myfiledatamale)
 #Calculate the Estimated VO2max
 vo2max <- function(distance) (distance - 504.9) / 44.73
 
-test <- function(testdata)
+test <- function(testdata,dist)
 {
   result <- ""
   for (i in 2:length(catagories)) {
     
-    a <- strsplit(usedata[,i],"-")
+    a <- strsplit(testdata[,i],"-")
     
     print(a)
     
@@ -34,17 +34,17 @@ test <- function(testdata)
     {
       ##Single
       lower <- sapply(a, function(x){as.numeric(x[1])})
-      
+      print(lower)
       if(dist > lower)
       {
         #High value
-        #print("Match Upper bound")
+        print("Match Upper bound")
         result <- catagories[i]
         break
       } else 
       {
         #Test more
-        #print("Match Lower bound")      
+        print("Match Lower bound")      
         result <- catagories[i]
         
       }
@@ -55,18 +55,15 @@ test <- function(testdata)
       upper <- sapply(a, function(x){as.numeric(x[2])})
       if((lower <= dist) & (upper >= dist )) #Test more
       {
-        #print("Match multi")
+        print("Match multi")
         result <- catagories[i]
         break
       } 
-      #else 
-      #{
-      #  print("Test More Multi")
-      #} 
-      
-      
+      else 
+      {
+        print("Test More Multi")
+      } 
     }
-    
   }
   result
 }
@@ -75,52 +72,20 @@ compaDistance <- function(agegroup,sex,distance) {
   if(sex == 1)
   {
     #Use Male data
-    
-    
-    
     usedata <- myfiledatamale[myfiledatamale$Age==agegroup,,drop =FALSE]
+    #head(usedata)
+    t <- test(usedata,distance)
     
-    t <- test(usedata)
     
-    #Loop through each Column in usedata and find the Column that the Distance Fit into
-    #index <- 2
-    #for (i in 1:length(catagories)) {
-      
-    #  tt <- strsplit(usedata[,i],"-")
-    #  if(length(tt>1))
-    #  {
-        #Upper and lower bound
-    #    print(tt[1])
-    #  }
-    #  else
-    #  {
-    #    #single value
-    #  }
-    #  testval <- usedata[,i]
-    #  print(testval)
-    #  if(testval > distance)
-    #  {
-        #Less than the low value
-    #    index <- i
-        
-    #  }
-    #  else
-    #  {
-    #    #Test more
-    #  }
-    #  #result <-paste(catagories[i],distance)
-    #}
-    
-    #result
-    paste(t,distance)
+    paste(t, " Results for distance", distance, " m walked")
     
   }
   else
   {
     #Use Female Data
-    "Average"
     usedata <- myfiledatafemale[myfiledatafemale$Age==agegroup,,drop =FALSE]
-    paste(catagories[2],distance)
+    t <- test(usedata,distance)
+    paste(t," Results for distance", distance, " m walked")
   }
   
 }
@@ -172,11 +137,11 @@ shinyServer(
       isolate(
         if(input$numDist>0)
         {
-          vo2max(input$numDist)
+          paste(round(vo2max(input$numDist), digits = 3) , " mls/kg/min")
         }
         else
         {
-          0.00
+          "0.00 mls/kg/min"
         }
         
       )
@@ -196,22 +161,6 @@ shinyServer(
             }
         )
       })
-    
-    #output$text1 <- renderText({
-      
-    #})
-
-#    output$newHist <- renderPlot({
-      
-    #hist(galton$child, xlab='child height', col='lightblue',main='Histogram')
-#     hist(smalldata$Global_active_power, col = "orange",main = "Histogram",xlab = "Global Active Power(kilowatts)")
-#      mu <- input$mu
-#      lines(c(mu, mu), c(0, 200),col="red",lwd=5)
-#      mse <- mean((smalldata$Global_active_power - mu)^2)
-#      text(63, 150, paste("mu = ", mu))
-#      text(63, 140, paste("MSE = ", round(mse, 2)))
-#    })
-    
   }
 )
 

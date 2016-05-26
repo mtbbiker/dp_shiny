@@ -34,9 +34,9 @@ shinyUI(pageWithSidebar(
     h2('Range of data for Age'),
     
     dataTableOutput('mytable'),
-    h3('Results for walking Distance'),
+    h3('Results for walking Distance:'),
     h2(textOutput('testresult')),
-    h2('Estimated VO2max'),
+    h2('Estimated VO2max:'),
     h2(textOutput('vo2max'))
     #,plotOutput('newHist')
     
