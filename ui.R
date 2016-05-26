@@ -12,7 +12,7 @@ library(shiny)
 # Define UI for application that draws a histogram
 
 shinyUI(pageWithSidebar(
-  headerPanel("Cooper 12 min Walk VO2max Test"),
+  headerPanel("Cooper V02max 12 min walk Test calculator"),
   sidebarPanel(
     #sliderInput('mu', 'Guess at the mean',value = 70, min = 62, max = 74, step = 0.05,)
     radioButtons("radioGender", label = h3("Select Gender"),
