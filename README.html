@@ -119,8 +119,8 @@ $(document).ready(function () {
 
 
 <hr />
-<div id="your-shiny-application" class="section level2">
-<h2>Your Shiny Application</h2>
+<div id="your-shiny-application" class="section level3">
+<h3>Your Shiny Application</h3>
 <ol style="list-style-type: decimal">
 <li>Write a shiny application with associated supporting documentation. The documentation should be thought of as whatever a user will need to get started using your application.</li>
 <li>Deploy the application on Rstudio’s shiny server</li>
@@ -130,12 +130,58 @@ $(document).ready(function () {
 </ol>
 <ul>
 <li>Some form of input (widget: textbox, radio button, checkbox, …)</li>
-<li>Some operation on the ui input in sever.R</li>
+<li>Some operation on the ui input in server.R</li>
 <li>Some reactive output displayed as a result of server calculations</li>
 <li>You must also include enough documentation so that a novice user could use your application.</li>
 <li>The documentation should be at the Shiny website itself. Do not post to an external link.</li>
 </ul>
 <p>The Shiny application in question is entirely up to you. However, if you’re having trouble coming up with ideas, you could start from the simple prediction algorithm done in class and build a new algorithm on one of the R datasets packages. Please make the package simple for the end user, so that they don’t need a lot of your prerequisite knowledge to evaluate your application. You should emphasize a simple project given the short time frame.</p>
+</div>
+<div id="background---cooper-vo2-max-test-link" class="section level2">
+<h2>Background - Cooper VO2 max test <a href="http://www.brianmac.co.uk/gentest.htm">Link</a></h2>
+<p>Fitness and and Level of fitness could be quantifier by evaluating a athletes VO2 max value. VO2 max, or also known as maximal oxygen uptake is a factor that indicate an athletes capacity to perform sustained exercise and is linked to an individual’s aerobic endurance. It is the maximum amount of oxygen an individiual can utilize during maximal exercise. It is generally considered as an indicator of an athlete’s cardiovascular fitness. Endurance athletes such as marathon runners and elite cyclist usually have higher values than the normal population’s values.</p>
+<div id="how-is-v02-max-measured" class="section level3">
+<h3>How is V02 max measured</h3>
+<p>To accurately measure V02 max generally requires equipment and gas analyser instruments typically found in High Performance sport laboratories. Test are performed under strict protocal amnd requires maximum effort from an athlete. Oxygen consumption rises in a linear relationship with exercise intensity –up to a point. This plateau marks the V02 max point. From that point it is not long that muscle fatique forces and athlete to stop exercising.</p>
+</div>
+<div id="the-cooper-walking-test1" class="section level3">
+<h3>The Cooper walking Test[1]</h3>
+<p>The Cooper Test was developed to estimate an Athletes VO2 max and provide a simple way of testing athletes for subsequent performance evaluations.</p>
+<div id="required-resources" class="section level4">
+<h4>Required Resources</h4>
+<p>To undertake this test you will require:</p>
+<ul>
+<li>400 metre track</li>
+<li>Stopwatch</li>
+<li>Whistle</li>
+<li>Assistant</li>
+</ul>
+</div>
+<div id="how-to-conduct-the-test" class="section level4">
+<h4>How to conduct the test</h4>
+<p>This test requires the athlete to run as far as possible in 12 minutes.</p>
+<ul>
+<li>The athlete warms up for 10 minutes</li>
+<li>The assistant gives the command “GO”, starts the stopwatch and the athlete commences the test</li>
+<li>The assistant keeps the athlete informed of the remaining time at the end of each lap (400m)</li>
+<li>The assistant blows the whistle when the 12 minutes has elapsed and records the distance the athlete covered to the nearest 10 metres</li>
+</ul>
+</div>
+</div>
+<div id="how-to-use-the-shiny-application-to-calculate-an-athletes-v02-max" class="section level3">
+<h3>How to use the Shiny Application to calculate an Athletes V02 max</h3>
+<ol style="list-style-type: decimal">
+<li>On the the Left <code>Sidebar Panel</code> use the <code>Radio button</code> to select the Gender of the Athlete, The Data table will be updated to reflect the values based on Gender.</li>
+<li>From the <code>Drop-down</code> list select the Age category of the Athlete. The table will show the Level of fitness Groups for the Age selected.</li>
+<li>Enter the Distance completed during the 12 min test by the Athlete.</li>
+<li>Press the <code>Calculate</code> button to calculate the V02 max value. The applicion (Server.R) will calculate the V02 max and display the value.</li>
+<li>To recalculate any values, Retart the instructions at point 1.</li>
+</ol>
+<div id="references" class="section level4">
+<h4>References</h4>
+<pre><code>1. COOPER, K.H. (1968) A means of assessing maximal oxygen intake. JAMA. 203, p. 135-138</code></pre>
+</div>
+</div>
 </div>
 
 
